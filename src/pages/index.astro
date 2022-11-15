@@ -19,6 +19,7 @@ const response = await fetch(`${import.meta.env.WP_GRAPHQL_URL}/`,
 const json = await response.json();
 const allPosts = json.data.posts.edges;
 const heroPost = allPosts[0];
+
 ---
 
 <MainLayout>
