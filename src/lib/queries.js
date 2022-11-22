@@ -69,12 +69,30 @@ export const findPostBySlug = `query findPostBySlug($slug: String!) {
 export const datosPagina = `query datos {
   datos {
     nodes {
-      telfonoDeLinea
-      sliders
-      direccion
       nombreDeLaTienda
+      direccion
+      telefonoDeLinea
+      email
       numeroWhatsApp
+      facebook
+      instagram
+      tikTok
       leyendaEnHeaderSuperior
+      mensajeImportante      
     }
   }
+}`;
+
+export const categoriasPrincipalesQuery = `query categorias {
+	productCategories(first: 4) {
+		nodes {
+			id
+			name
+			slug
+			image {
+				sourceUrl
+				altText
+			}
+		}
+	}	
 }`;

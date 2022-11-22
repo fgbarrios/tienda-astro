@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
-    "astro": "^1.6.0"
+    "astro": "^1.6.0",
+    "astro-icon": "^0.8.0"
   }
 }

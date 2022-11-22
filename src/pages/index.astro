@@ -2,35 +2,18 @@
 import MainLayout from "../Layout/MainLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-
-import { getFirstPostsQuery } from '../lib/queries';
-
-const response = await fetch(`${import.meta.env.WP_GRAPHQL_URL}/`,
-	{
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			query: getFirstPostsQuery,
-			variables: {
-				first: 20,
-			},
-		}),
-	})
-const json = await response.json();
-const allPosts = json.data.posts.edges;
-const heroPost = allPosts[0];
+import Sliders from "../components/Sliders.astro";
 
 ---
 
 <MainLayout>
 
   <Header/>
-		
-    <h1>Astro</h1>
-    <div>{heroPost.node.title}</div>
-	<h2>Update</h2>
 
-    <Footer/>
+  <Sliders />
+
+  <Footer/>
+
 </MainLayout>
 
 

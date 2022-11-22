@@ -1,12 +1,18 @@
+---
+import { datosSitio } from "../lib/fetch";
+
+let titulo = datosSitio.nombreDeLaTienda;
+---
+
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/ecommerce.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-
-
+		<title>{titulo}</title>
+		<link rel="stylesheet" href="/styles/global.css" />
 	</head>
 	<body>
 

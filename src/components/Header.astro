@@ -1,7 +1,72 @@
-<nav>
-    <ul>
-        <li>Inicio</li>
-        <li>Servicios</li>
-        <li>Contacto</li>
-    </ul>
-</nav>
+---
+import { Icon } from 'astro-icon';
+import { datosSitio } from "../lib/fetch";
+
+let mensajeHeader = datosSitio.leyendaEnHeaderSuperior;
+let email = "mailto:" + datosSitio.email;
+let facebookUrl = datosSitio.facebook;
+let instagramUrl = datosSitio.instagram;
+let tikTokUrl = datosSitio.tikTok;
+
+---
+
+<div id="headerSuperior">
+    <div></div>
+    <div>{mensajeHeader}</div>
+    <div class="redesSociales">
+        
+            <a href={facebookUrl} target="_blank"><Icon name="facebook" /></a> 
+            <a href={instagramUrl} target="_blank"><Icon name="instagram" /></a>
+            { tikTokUrl != '' && <a href={tikTokUrl}><Icon name="tiktok" /></a> }
+            <a href={email}><Icon name="email" /></a>
+            
+    </div>    
+</div>
+    
+<header>
+    <div>
+        <img src="/logo.png" alt="Logo de tienda" width="200" height="70">
+    </div>
+    <div class="buscador">Buscador</div>
+    <div class="carrito">Carrito</div>
+</header>
+
+<style>
+    header{
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+        margin-top: 1rem;
+        width: 100%;
+        height: 80px;
+        min-height: 30px;
+        background-color: #2b5eeb;
+        color: whitesmoke;
+    }
+
+    ul{
+        list-style: none;
+        display: flex;
+    }
+    li{
+        padding-right: 0.8rem;
+    }
+
+    #headerSuperior{
+        display: flex;
+        justify-content: space-between;
+        padding-top: 0.2rem;
+        padding-right: 1.2rem;
+    }
+
+    #redesSociales{
+        display: flex;
+        right: 10;
+    }
+
+   [astro-icon] {
+        color: grey;
+        width: .9rem;
+    }
+
+</style>

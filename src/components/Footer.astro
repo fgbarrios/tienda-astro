@@ -1,8 +1,41 @@
-<nav>
-    <ul>
-        <li>Inicio</li>
-        <li>Servicios</li>
-        <li>Politica de privacidad</li>
-        <li>Contacto</li>
-    </ul>
-</nav>
+<footer>
+    <div> 
+        <img src="/logo.png" alt="Logo de tienda" width="150" height="50">
+    </div>
+    <div>
+        <ul>
+            <li><a href="">Inicio</a></li>
+            <li><a href="">Servicios</a></li>
+            <li><a href="">Politica de privacidad</a></li>
+            <li><a href="">Contacto</a></li>
+        </ul>
+    </div>
+</footer>
+
+<style>
+    footer{
+        display: flex;
+        justify-content: space-between;
+        bottom: 0;
+        height: 20px;
+        background-color: #2b5eeb;
+        color: whitesmoke;
+        padding: 0 0.5rem;
+    }
+    ul{
+        display: flex;
+    }
+    li{
+        list-style-type: none;
+        padding-right: 0.5rem;
+    }
+    li a{
+        text-decoration: none;
+        color: whitesmoke;
+    }
+
+    li a:hover{
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+</style>
