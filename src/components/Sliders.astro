@@ -8,7 +8,7 @@ import { categoriasPrincipales } from "../lib/fetch";
         categoriasPrincipales.map( ( item ) => {    
             return (           
                 <div id={item?.slug} style={`background-image: url(${item?.image?.sourceUrl})`}>
-                    <p><a href={`/productos/${item?.slug}`}></a>{item?.name}</p>
+                    <p><a href={`/productos/${item?.slug}`}>{item?.name}</a></p>
                 </div>
                 )
         })
