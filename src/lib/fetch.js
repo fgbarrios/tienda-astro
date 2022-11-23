@@ -1,33 +1,10 @@
 const URL = import.meta.env.WP_GRAPHQL_URL;
-
-/*
-* ARTICULOS DEL BLOG
-*/
-
-import { getFirstPostsQuery, datosPagina, categoriasPrincipalesQuery } from '../lib/queries';
-
-const postsBlog = await fetch(`${URL}/`,
-	{
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			query: getFirstPostsQuery,
-			variables: {
-				first: 20,
-			},
-		}),
-	});
-
-const jsonBlog = await postsBlog.json();
-const allPosts = jsonBlog.data.posts.edges;
-
-export { allPosts };
-
-//const heroPost = allPosts[0]; // primer post
+import { traerPrimerPostQuery, datosPagina, categoriasPrincipalesQuery } from '../lib/queries';
 
 /*
 * DATOS DEL SITIO
 */
+
 const datos = await fetch(`${URL}/`,
 	{
 		method: 'POST',
@@ -42,7 +19,30 @@ const datosSitio = jsonDatos.data.datos.nodes[0];
 export { datosSitio };
 
 /*
-* PRINCIPALES CATEGORIAS
+* ******** BLOG **********
+*/
+
+const postsBlog = await fetch(`${URL}/`,
+	{
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			query: traerPrimerPostQuery,
+			variables: {
+				first: 20,
+			},
+		}),
+	});
+
+const jsonBlog = await postsBlog.json();
+const allPosts = jsonBlog.data.posts.edges;
+
+export { allPosts };
+//const heroPost = allPosts[0]; // primer post
+
+
+/*
+* ********* WOOCOMMERCE ***************
 */
 const categorias = await fetch(`${URL}/`,
 	{

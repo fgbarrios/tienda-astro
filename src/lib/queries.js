@@ -1,4 +1,25 @@
-export const allPostsWithSlugQuery = `
+export const datosPagina = `query datos {
+  datos {
+    nodes {
+      nombreDeLaTienda
+      direccion
+      telefonoDeLinea
+      email
+      numeroWhatsApp
+      facebook
+      instagram
+      tikTok
+      leyendaEnHeaderSuperior
+      mensajeImportante      
+    }
+  }
+}`;
+
+/*
+* ENTRADAS DE BLOG
+*/
+
+export const todosLosPostsConSlugQuery = `
 {
   posts(first: 10000) {
     edges {
@@ -10,7 +31,7 @@ export const allPostsWithSlugQuery = `
 }
 `;
 
-export const getFirstPostsQuery = `
+export const traerPrimerPostQuery = `
 query AllPosts($first: Int) {
   posts(first: $first, where: { orderby: { field: DATE, order: DESC } }) {
     edges {
@@ -42,7 +63,7 @@ query AllPosts($first: Int) {
 }
 `;
 
-export const findPostBySlug = `query findPostBySlug($slug: String!) {
+export const encontrarPostPorSlug = `query findPostBySlug($slug: String!) {
   postBy(slug: $slug) {
     title
     featuredImage {
@@ -66,22 +87,9 @@ export const findPostBySlug = `query findPostBySlug($slug: String!) {
 }`;
 
 
-export const datosPagina = `query datos {
-  datos {
-    nodes {
-      nombreDeLaTienda
-      direccion
-      telefonoDeLinea
-      email
-      numeroWhatsApp
-      facebook
-      instagram
-      tikTok
-      leyendaEnHeaderSuperior
-      mensajeImportante      
-    }
-  }
-}`;
+/*
+*   WOOCOMMERCE
+*/
 
 export const categoriasPrincipalesQuery = `query categorias {
 	productCategories(first: 4) {

@@ -6,3 +6,7 @@
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
+
+:root{
+    --clr-primary-400: hsl(158, 36%, 37%);
+}
