@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
 import { datosSitio } from "../lib/fetch";
+import { links } from "../lib/info";
 
 let mensajeHeader = datosSitio.leyendaEnHeaderSuperior;
 let email = "mailto:" + datosSitio.email;
@@ -10,9 +11,10 @@ let tikTokUrl = datosSitio.tikTok;
 
 ---
 
-<div id="headerSuperior">
-    <div></div>
-    <div>{mensajeHeader}</div>
+<div id="headerSuperior">    
+    <div>
+    </div>
+    <div id="mensajeSuperior">{mensajeHeader}</div>
     <div class="redesSociales">
         
             <a href={facebookUrl} target="_blank"><Icon name="facebook" /></a> 
@@ -24,11 +26,28 @@ let tikTokUrl = datosSitio.tikTok;
 </div>
     
 <header>
-    <div>
+    <div id="logo">
         <img src="/logo.png" alt="Logo de tienda" width="200" height="70">
     </div>
-    <div class="buscador">Buscador</div>
-    <div class="carrito">Carrito</div>
+
+    <div class="buscador">
+        <form action="">
+            <Icon name="mdi:search" />
+            <input type="text" name="buscarProducto" id="" placeholder="Buscar producto">
+        </form>
+    </div>
+
+    <div id="links">
+        <ul>
+        {links.map(link => (
+            <li>
+              <a href={link.slug} title={link.name}>{link.nombre}</a>
+            </li>)
+        )}
+        </ul>
+
+        <Icon name="mdi:cart" />
+    </div>
 </header>
 
 <style>
@@ -36,7 +55,7 @@ let tikTokUrl = datosSitio.tikTok;
         display: flex;
         justify-content: space-between;
         padding: 2rem;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
         width: 100%;
         height: 80px;
         min-height: 30px;
@@ -52,11 +71,52 @@ let tikTokUrl = datosSitio.tikTok;
         padding-right: 0.8rem;
     }
 
+    li a{
+        text-decoration: none;
+        color: whitesmoke;
+    }
+
+    li a:hover{
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        color: whitesmoke;
+        font-weight: 700;
+    }
+
+    .buscador form{
+        background-color: whitesmoke;
+        display: flex;
+        justify-content: center;
+        width: inherit;
+    }
+
+    input{
+        width: inherit;
+    }
+
+
+
+    #logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     #headerSuperior{
         display: flex;
         justify-content: space-between;
         padding-top: 0.2rem;
         padding-right: 1.2rem;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    #links{
+        display: flex;
+    }
+
+    #mensajeSuperior{
+        font-size: 0.9rem;
     }
 
     #redesSociales{
@@ -67,6 +127,19 @@ let tikTokUrl = datosSitio.tikTok;
    [astro-icon] {
         color: grey;
         width: .9rem;
+    }
+
+    [astro-icon="mdi:cart"] {
+        color: whitesmoke;
+        width: 2.5rem;
+        height: 1.5rem;
+        cursor:pointer;
+    }
+
+    [astro-icon="mdi:search"] {
+        color: grey;
+        width: 1.5rem;
+        cursor:pointer;
     }
 
 </style>
